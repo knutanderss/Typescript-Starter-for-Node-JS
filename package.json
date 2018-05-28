@@ -1,0 +1,42 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "testw": "jest --coverage --watchAll",
+    "buildAndTestw": "concurrently 'npm run watch' 'npm run testw'",
+    "tsc": "tsc",
+    "clean": "rimraf artifacts",
+    "build": "npm run clean && npm run tsc --",
+    "lint": "tslint --project tsconfig.json src/**/*.ts",
+    "watch": "npm run build -- -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^22.2.3",
+    "concurrently": "^3.5.1",
+    "jest": "^23.0.1",
+    "tslint": "^5.10.0",
+    "typescript": "^2.8.3"
+  },
+  "dependencies": {
+    "tslint-config-airbnb": "^5.9.2"
+  },
+  "jest": {
+    "testRegex": "dist/.+\\.(test|spec).js$",
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "text-summary",
+      "html"
+    ],
+    "collectCoverageFrom": [
+      "dist/**/*.js",
+      "!dist/**/*.spec.js",
+      "!dist/**/*.index.js"
+    ]
+  }
+}
